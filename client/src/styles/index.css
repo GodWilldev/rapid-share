@@ -1,0 +1,51 @@
+:root {
+  --mui-palette-primary-main: #4be40d;
+  --mui-palette-secondary-main: #212D45;
+  --mui-palette-background-default: rgb(15, 22, 36);
+  --mui-palette-background-paper: #212D45;
+  --mui-palette-text-primary: #fff;
+  --mui-palette-text-secondary: #eee;
+  --mui-palette-text-contrast: #000;
+  /* ...other variables */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-size: 100%;
+  scroll-behavior: smooth;
+  overflow-x: auto;
+}
+a {
+  text-decoration: none;
+}
+li{
+  display: list-item;
+  list-style-position: inside;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #e0e0e0;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #424242;
+}
+
+table {
+  border-color: white;
+}
