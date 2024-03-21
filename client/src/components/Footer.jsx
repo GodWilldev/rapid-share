@@ -32,7 +32,7 @@ export function GitHubLink() {
     return (
         <Tooltip title="Source Code">
             <IconButton aria-label="github" onClick={() => {
-                window.open(githubLink+"rapid-share", "_blank")
+                window.open(githubLink+"/rapid-share", "_blank")
             }}>
                 <GitHubIcon />
             </IconButton>
