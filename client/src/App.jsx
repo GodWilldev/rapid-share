@@ -9,6 +9,7 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
+import Link from '@mui/material/Link';
 import SendIcon from '@mui/icons-material/Send';
 
 import { v4 as uuidv4 } from 'uuid';
@@ -84,9 +85,9 @@ function App() {
     socket.on('connect', onConnect);
     socket.on('disconnect', onDisconnect);
     socket.on('receiveMessage', onReceiveMessage)
-    socket.onAny((eventName, ...args) => {
-      console.log("---", eventName, "fired with arguments", args, "by user", socket.id);
-    });
+    // socket.onAny((eventName, ...args) => {
+    //   console.log("---", eventName, "fired with arguments", args, "by user", socket.id);
+    // });
 
     return () => {
       socket.off('connect', onConnect);
@@ -102,7 +103,7 @@ function App() {
         <Container maxWidth="xxl" component="main" sx={{ textAlign: "center", py: 5 }}>
           <img src={logo} width={150} alt="logo" />
           <Typography variant="h6" component="p" sx={{ mb: 5 }}>
-            Rapid Share
+            RapidShare
           </Typography>
           <Tooltip title="Create a new room with a secure id">
             <Button variant="contained" onClick={handleCreateRoom} sx={{ mb: 5 }}>New room</Button>
@@ -111,17 +112,23 @@ function App() {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
+            mb:3
           }}>
             <TextField label="Room's id"
               variant="outlined"
               value={room}
               onChange={(e) => setRoom(e.target.value)}
-              sx={{mr:4}}
+              sx={{ mr: 4 }}
             />
             <Tooltip title="Join an room given the id">
               <Button variant="text" onClick={() => connect(room)}>Join room</Button>
             </Tooltip>
           </Box>
+          <Typography variant="body1" color="text.warning" align="center" >
+            <Link href="https://github.com/GodWilldev/rapid-share" variant="button" underline='hover' target="_blank">
+              How Does It Works?
+            </Link>
+          </Typography>
           <Footer />
         </Container>
         :
@@ -139,9 +146,11 @@ function App() {
                 onChange={(e) => setMessage(e.target.value)}
               />
               <Tooltip title="Send">
-                <IconButton aria-label="send" disabled={isLoading} onClick={handleSend}>
-                  <SendIcon />
-                </IconButton>
+                <span>
+                  <IconButton aria-label="send" disabled={isLoading} type="submit" onClick={handleSend}>
+                    <SendIcon />
+                  </IconButton>
+                </span>
               </Tooltip>
             </Toolbar>
           </MuiAppBar>

@@ -17,11 +17,11 @@ export default function AppBar({ disconnect, roomId }) {
 	return (
 		<MuiAppBar position="fixed" sx={{ px: 2 }} color='background'>
 			<Toolbar disableGutters>
-				<Tooltip title="Rapid Share">
+				<Tooltip title="RapidShare">
 					<img src={logo} width={50} alt="logo" />
 				</Tooltip>
 				{matcheMd && <Typography variant="h6" component="div">
-					Rapid Share
+					RapidShare
 				</Typography>}
 				<Box sx={{ flexGrow: 1, textAlign: 'center' }}>
 					<Typography variant="body1" component="div" >
