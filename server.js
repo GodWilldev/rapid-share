@@ -19,12 +19,17 @@ io.on('connection', (socket) => {
   socket.onAny((eventName, ...args) => {
     console.log("---", eventName, "fired with arguments", args, "by user", socket.id);
   });
-  socket.on('sendMessage', (value) => {
+  //to join a room after connection
+  socket.on("join_request", (value, callback) => {
+    socket.join(value);
+    callback();
+  })
+  socket.on('sendMessage', (message, room, callback) => {
     //broadcast to others users
-    socket.broadcast.emit('receiveMessage', {...value, name:socket.id, userId:socket.id });
-    // console.log("---", 'receiveMessage', "broadcast", "by server")
+    socket.to(room).emit('receiveMessage', {...message, name:socket.id, userId:socket.id });
     //private message to sender
-    io.to(socket.id).emit('receiveMessage', {...value, name:'Me', userId:socket.id});
+    io.to(socket.id).emit('receiveMessage', {...message, name:'Me', userId:socket.id});
+    callback();
   });
   socket.on("disconnect", (reason) => {
     console.log("the user", socket.id, "is disconnecting for", reason);

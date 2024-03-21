@@ -22,9 +22,9 @@ export default function MessageCard({name, date, content, userId}) {
 
   function parseDate(date){
     const d = new Date(date)
-    // return d.getHours()+':'+d.getMinutes()+' '+d.getDay()+' '+d.getMonth()+' '+d.getFullYear();
     let timeArray = d.toTimeString().split(' ')[0].split(':');
-    return timeArray[0]+':'+timeArray[0];
+
+    return timeArray[0]+':'+timeArray[1];
   }
 
   function stringToColor(string) {
@@ -49,7 +49,7 @@ export default function MessageCard({name, date, content, userId}) {
   
 
   return (
-    <Card sx={{ maxWidth: 545, borderRadius:3, margin:2 }}>
+    <Card sx={{ maxWidth: {xs:'100%', sm:'80%', lg:800}, minWidth:200, borderRadius:3, my:2, mx:{xs:0, sm:1, md:2}, width:'fit-content' }}>
       <CardHeader
         avatar={
           <Avatar sx={{bgcolor:stringToColor(userId)}}>
@@ -62,11 +62,12 @@ export default function MessageCard({name, date, content, userId}) {
             </IconButton>
           </Tooltip>
         }
-        title={name}
+        // title={name}
         subheader={parseDate(date)}
+        sx={{m:0,p:1}}
       />
-      <CardContent>
-        <Typography variant="body1" color="text.primary">
+      <CardContent sx={{pt:0}}>
+        <Typography variant="body1" color="text.primary" sx={{wordWrap:'break-word'}}>
           {content}
         </Typography>
       </CardContent>
