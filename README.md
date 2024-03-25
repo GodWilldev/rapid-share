@@ -36,3 +36,6 @@ Using RapidShare is pretty straightforward:
 **Advanced Usage:**
 - Teams can establish predefined unique room IDs for efficient communication.
 - Utilize this ID to access the room whenever required for seamless interaction.
+
+You can access the deployed version [here](https://github.com/GodWilldev/rapid-share).
+**Note:** Buttons might not work upon initial use. In that case, click and wait some seconds in order to let the server start(free deployment constraints 😑).
